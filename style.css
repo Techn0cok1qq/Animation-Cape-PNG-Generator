@@ -1,0 +1,41 @@
+:root { --bg:#101316; --panel:#181d21; --panel-2:#20272c; --line:#344047; --text:#edf2f3; --muted:#9eabb0; --accent:#79d2c0; --accent-2:#f1bd72; --danger:#ef8e8e; }
+* { box-sizing:border-box; }
+body { margin:0; color:var(--text); background:radial-gradient(circle at 80% 0%, #26393c 0, transparent 38%), var(--bg); font-family:ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; min-height:100vh; }
+header { max-width:1180px; margin:auto; padding:34px 28px 22px; display:flex; justify-content:space-between; gap:20px; align-items:end; }
+h1 { margin:0; font-size:clamp(25px,4vw,42px); letter-spacing:.02em; font-weight:760; }
+.subtitle { color:var(--muted); margin:9px 0 0; font-size:14px; }
+.lang { display:flex; border:1px solid var(--line); border-radius:7px; overflow:hidden; }
+.lang button { border:0; background:transparent; color:var(--muted); padding:8px 12px; cursor:pointer; }
+.lang button.active { background:var(--accent); color:#10201f; font-weight:700; }
+main { max-width:1180px; margin:auto; padding:0 28px 42px; }
+.site-footer { max-width:1180px; margin:0 auto; padding:0 28px 28px; color:var(--muted); font-size:12px; text-align:right; }
+.layout { display:grid; grid-template-columns:minmax(300px, .8fr) minmax(420px, 1.2fr); gap:18px; }
+.panel { background:rgba(24,29,33,.94); border:1px solid var(--line); border-radius:8px; padding:20px; box-shadow:0 18px 45px rgba(0,0,0,.18); }
+.panel h2 { margin:0 0 16px; font-size:16px; letter-spacing:.02em; }
+.drop { min-height:190px; border:1px dashed #607078; border-radius:7px; display:grid; place-items:center; text-align:center; cursor:pointer; padding:20px; transition:.18s ease; }
+.drop:hover, .drop.dragover { border-color:var(--accent); background:#1d3030; }
+.drop strong { display:block; font-size:16px; }
+.drop span { display:block; color:var(--muted); font-size:12px; margin-top:9px; }
+input[type=file] { display:none; }
+.meta { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:15px; }
+.stat { background:var(--panel-2); border-radius:6px; padding:11px 12px; }
+.stat small { color:var(--muted); display:block; font-size:11px; }
+.stat b { display:block; margin-top:3px; font-size:15px; }
+.controls { margin-top:18px; display:flex; align-items:center; gap:11px; flex-wrap:wrap; }
+button.action { border:0; border-radius:6px; padding:11px 15px; cursor:pointer; font-weight:700; background:var(--accent); color:#11201f; }
+button.action.secondary { background:var(--panel-2); color:var(--text); border:1px solid var(--line); }
+button.action:disabled { opacity:.4; cursor:not-allowed; }
+.hint { color:var(--muted); font-size:12px; line-height:1.55; margin:15px 0 0; }
+.stage-wrap { min-height:420px; display:grid; place-items:center; background-color:#344449; background-image:linear-gradient(rgba(216,235,230,.07) 1px, transparent 1px),linear-gradient(90deg, rgba(216,235,230,.07) 1px, transparent 1px),radial-gradient(circle at center, #52666a 0, #344449 72%); background-size:24px 24px,24px 24px,100% 100%; border:1px solid #5e7275; border-radius:6px; overflow:hidden; perspective:900px; }
+.stage { width:min(100%, 650px); aspect-ratio:512/256; position:relative; filter:drop-shadow(22px 24px 18px rgba(0,0,0,.45)); }
+.preview-image { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; visibility:hidden; }
+.preview-image.active { visibility:visible; }
+.preview-tools { display:flex; align-items:center; gap:12px; margin-top:15px; }
+input[type=range] { accent-color:var(--accent); min-width:120px; flex:1; }
+.frame-counter { min-width:62px; text-align:right; font-variant-numeric:tabular-nums; color:var(--muted); }
+.progress { height:5px; margin-top:18px; background:#293136; border-radius:4px; overflow:hidden; display:none; }
+.progress i { display:block; width:0; height:100%; background:var(--accent-2); transition:width .15s; }
+#status { min-height:21px; color:var(--muted); font-size:13px; margin-top:13px; }
+#status.error { color:var(--danger); }
+.spec { margin-top:18px; border-top:1px solid var(--line); padding-top:15px; color:var(--muted); font-size:12px; line-height:1.7; }
+@media (max-width:780px) { header { padding:24px 16px 18px; align-items:start; } main { padding:0 16px 28px; } .layout { grid-template-columns:1fr; } .stage-wrap { min-height:260px; } }

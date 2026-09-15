@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Cape Motion Lab</title>
+	<meta name="author" content="@cokacolastic">
+	<meta name="copyright" content="© 2026 @cokacolastic">
+	<meta name="description" content="GIFやMP4をマントアニメーション用のPNGフレームへ変換するツール">
+	<meta property="og:title" content="Animation Cape PNG Generator">
+	<meta property="og:description" content="GIF / MP4をマントアニメーション用PNGへ変換">
+	<meta property="og:type" content="website">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<header>
+		<div><h1>Animation Cape PNG Generator For Legacy Console Edition</h1><p class="subtitle" data-ja="GIF / MP4 をマントアニメーション用PNGへ" data-en="Turn GIF / MP4 into cape animation PNGs">GIF / MP4 をマントアニメーション用PNGへ</p></div>
+		<div class="lang" aria-label="Language"><button class="active" data-lang="ja">日本語</button><button data-lang="en">EN</button></div>
+	</header>
+	<main>
+		<div class="layout">
+			<section class="panel">
+				<h2 data-ja="1. 素材を読み込む" data-en="1. Load a source">1. 素材を読み込む</h2>
+				<label class="drop" id="dropZone" for="fileInput">
+					<div><strong data-ja="GIF または MP4 を選択" data-en="Choose a GIF or MP4">GIF または MP4 を選択</strong><span data-ja="ここにドラッグ＆ドロップもできます" data-en="You can also drag and drop here">ここにドラッグ＆ドロップもできます</span></div>
+				</label>
+				<input id="fileInput" type="file" accept="image/gif,video/mp4,.gif,.mp4">
+				<div class="meta"><div class="stat"><small data-ja="ファイル" data-en="File">ファイル</small><b id="fileName">-</b></div><div class="stat"><small data-ja="フレーム" data-en="Frames">フレーム</small><b id="frameCount">-</b></div><div class="stat"><small>PNG / frame</small><b id="sizeInfo">-</b></div><div class="stat"><small data-ja="貼り付け先" data-en="Target area">貼り付け先</small><b>60 × 96 px</b></div></div>
+				<div class="controls"><button class="action" id="processBtn" disabled data-ja="変換する" data-en="Convert">変換する</button><button class="action secondary" id="downloadBtn" disabled data-ja="ZIPをダウンロード" data-en="Download ZIP">ZIPをダウンロード</button></div>
+				<div class="progress" id="progress"><i></i></div><div id="status" role="status"></div>
+				<p class="hint" data-ja="各画像は cape0.png から連番で保存されます。35KBを超える場合は自動的に縮小して再エンコードします。" data-en="Frames are saved as cape0.png and numbered sequentially. Frames over 35KB are automatically resized and re-encoded.">各画像は cape0.png から連番で保存されます。35KBを超える場合は自動的に縮小して再エンコードします。</p>
+				<div class="spec">TemplateCapes.png<br>Placement: x 7, y 7 / 60 × 96 px</div>
+			</section>
+			<section class="panel">
+				<h2 data-ja="2. 3Dプレビュー" data-en="2. 3D preview">2. 3Dプレビュー</h2>
+				<div class="stage-wrap"><div class="stage"><img id="preview" class="preview-image active" src="image/TemplateCapes.png" alt="Cape preview"><img id="previewBuffer" class="preview-image" src="image/TemplateCapes.png" alt=""></div></div>
+				<div class="preview-tools"><button class="action secondary" id="playBtn" disabled data-ja="▶ 再生" data-en="▶ Play">▶ 再生</button><input id="frameSlider" type="range" min="0" max="0" value="0" disabled><span class="frame-counter" id="frameLabel">0 / 0</span></div>
+			</section>
+		</div>
+	</main>
+	<footer class="site-footer">© 2026 @cokacolastic · All rights reserved.</footer>
+	<script>
+		if (location.protocol === 'file:') {
+			document.getElementById('status').textContent = 'Chromeで直接開く場合は動作しません。start-server.batを起動してください。';
+			document.getElementById('status').classList.add('error');
+		}
+	</script>
+	<script type="module" src="script.js"></script>
+</body>
+</html>
