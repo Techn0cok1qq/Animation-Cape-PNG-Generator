@@ -1,4 +1,4 @@
-# Cape Motion Lab
+# Animated Cape PNG Generator
 
 GIFまたは短いMP4を、マントアニメーション用の連番PNGへ変換するブラウザーアプリケーションです。
 
