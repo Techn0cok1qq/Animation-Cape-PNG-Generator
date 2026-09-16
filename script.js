@@ -1,6 +1,6 @@
 import * as gifuct from 'https://esm.sh/gifuct-js@2.1.2';
 
-const TARGET = { x: 7, y: 7, width: 60, height: 96, maxBytes: 35 * 1024 };
+const TARGET = { x: 6, y: 6, width: 60, height: 96, maxBytes: 35 * 1024 };
 const $ = (id) => document.getElementById(id);
 const state = { file:null, frames:[], urls:[], images:[], renderFrames:[], visibleCanvas:0, switching:false, playing:false, timer:null, lang:'ja' };
 const template = new Image();
